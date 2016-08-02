@@ -126,7 +126,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "Mini Kossel"
+#define CUSTOM_MACHINE_NAME "Der Geraet"
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -225,15 +225,14 @@
 //#define DUMMY_THERMISTOR_998_VALUE 25
 //#define DUMMY_THERMISTOR_999_VALUE 100
 // :{ '0': "Not used",'1':"100k / 4.7k - EPCOS",'2':"200k / 4.7k - ATC Semitec 204GT-2",'3':"Mendel-parts / 4.7k",'4':"10k !! do not use for a hotend. Bad resolution at high temp. !!",'5':"100K / 4.7k - ATC Semitec 104GT-2 (Used in ParCan & J-Head)",'6':"100k / 4.7k EPCOS - Not as accurate as Table 1",'7':"100k / 4.7k Honeywell 135-104LAG-J01",'8':"100k / 4.7k 0603 SMD Vishay NTCS0603E3104FXT",'9':"100k / 4.7k GE Sensing AL03006-58.2K-97-G1",'10':"100k / 4.7k RS 198-961",'11':"100k / 4.7k beta 3950 1%",'12':"100k / 4.7k 0603 SMD Vishay NTCS0603E3104FXT (calibrated for Makibox hot bed)",'13':"100k Hisens 3950  1% up to 300°C for hotend 'Simple ONE ' & hotend 'All In ONE'",'20':"PT100 (Ultimainboard V2.x)",'51':"100k / 1k - EPCOS",'52':"200k / 1k - ATC Semitec 204GT-2",'55':"100k / 1k - ATC Semitec 104GT-2 (Used in ParCan & J-Head)",'60':"100k Maker's Tool Works Kapton Bed Thermistor beta=3950",'66':"Dyze Design 4.7M High Temperature thermistor",'70':"the 100K thermistor found in the bq Hephestos 2",'71':"100k / 4.7k Honeywell 135-104LAF-J01",'147':"Pt100 / 4.7k",'1047':"Pt1000 / 4.7k",'110':"Pt100 / 1k (non-standard)",'1010':"Pt1000 / 1k (non standard)",'-3':"Thermocouple + MAX31855 (only for sensor 0)",'-2':"Thermocouple + MAX6675 (only for sensor 0)",'-1':"Thermocouple + AD595",'998':"Dummy 1",'999':"Dummy 2" }
-#define TEMP_SENSOR_0 7
+#define TEMP_SENSOR_0 1
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
-#define TEMP_SENSOR_3 0
-#define TEMP_SENSOR_BED 11
+#define TEMP_SENSOR_BED 1
 
 // This makes temp sensor 1 a redundant sensor for sensor 0. If the temperatures difference between these sensors is to high the print will be aborted.
 //#define TEMP_SENSOR_1_AS_REDUNDANT
-#define MAX_REDUNDANT_TEMP_SENSOR_DIFF 5
+#define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10
 
 // Extruder temperature must be close to target for this long before M109 returns success
 #define TEMP_RESIDENCY_TIME 10  // (seconds)
@@ -251,7 +250,6 @@
 #define HEATER_0_MINTEMP 5
 #define HEATER_1_MINTEMP 5
 #define HEATER_2_MINTEMP 5
-#define HEATER_3_MINTEMP 5
 #define BED_MINTEMP 5
 
 // When temperature exceeds max temp, your heater will be switched off.
@@ -397,27 +395,27 @@
   // Make delta curves from many straight lines (linear interpolation).
   // This is a trade-off between visible corners (not enough segments)
   // and processor overload (too many expensive sqrt calls).
-  #define DELTA_SEGMENTS_PER_SECOND 200
+  #define DELTA_SEGMENTS_PER_SECOND 120
 
   // NOTE NB all values for DELTA_* values MUST be floating point, so always have a decimal point in them
 
   // Center-to-center distance of the holes in the diagonal push rods.
-  #define DELTA_DIAGONAL_ROD 215.0 // mm
+  #define DELTA_DIAGONAL_ROD 225.0 // mm
 
   // Horizontal offset from middle of printer to smooth rod center.
-  #define DELTA_SMOOTH_ROD_OFFSET 145.0 // mm
+  #define DELTA_SMOOTH_ROD_OFFSET 167.0 // mm
 
   // Horizontal offset of the universal joints on the end effector.
-  #define DELTA_EFFECTOR_OFFSET 19.9 // mm
+  #define DELTA_EFFECTOR_OFFSET 30.8 // mm
 
   // Horizontal offset of the universal joints on the carriages.
-  #define DELTA_CARRIAGE_OFFSET 19.5 // mm
+  #define DELTA_CARRIAGE_OFFSET 15.9 // mm
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
   #define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-(DELTA_EFFECTOR_OFFSET)-(DELTA_CARRIAGE_OFFSET))
 
   // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
-  #define DELTA_PRINTABLE_RADIUS 90.0
+  #define DELTA_PRINTABLE_RADIUS 70.0
 
   // Delta calibration menu
   // uncomment to add three points calibration menu option.
@@ -462,13 +460,13 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-#define X_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Y_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+#define X_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
+#define Y_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 #define Z_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define X_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Y_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Z_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+#define X_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
+#define Y_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
+#define Z_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
+#define Z_MIN_PROBE_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -505,8 +503,8 @@
 // X and Y offsets must be integers.
 //
 // In the following example the X and Y offsets are both positive:
-// #define X_PROBE_OFFSET_FROM_EXTRUDER 10
-// #define Y_PROBE_OFFSET_FROM_EXTRUDER 10
+// #define X_PROBE_OFFSET_FROM_EXTRUDER -1.0
+// #define Y_PROBE_OFFSET_FROM_EXTRUDER 21
 //
 //    +-- BACK ---+
 //    |           |
@@ -518,9 +516,9 @@
 //    |           |
 //    O-- FRONT --+
 //  (0,0)
-#define X_PROBE_OFFSET_FROM_EXTRUDER 0     // X offset: -left  +right  [of the nozzle]
-#define Y_PROBE_OFFSET_FROM_EXTRUDER -10   // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -3.5  // Z offset: -below +above  [the nozzle]
+#define X_PROBE_OFFSET_FROM_EXTRUDER -1     // X offset: -left  +right  [of the nozzle]
+#define Y_PROBE_OFFSET_FROM_EXTRUDER 19  // Y offset: -front +behind [the nozzle]
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -9  // Z offset: -below +above  [the nozzle]
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 4000
@@ -555,11 +553,11 @@
   #define Z_PROBE_ALLEN_KEY_DEPLOY_3_Z Z_PROBE_ALLEN_KEY_DEPLOY_2_Z
   #define Z_PROBE_ALLEN_KEY_DEPLOY_3_FEEDRATE XY_PROBE_SPEED
 
-  #define Z_PROBE_ALLEN_KEY_STOW_DEPTH 20
+  #define Z_PROBE_ALLEN_KEY_STOW_DEPTH 25
   // Move the probe into position
-  #define Z_PROBE_ALLEN_KEY_STOW_1_X -64.0
-  #define Z_PROBE_ALLEN_KEY_STOW_1_Y 56.0
-  #define Z_PROBE_ALLEN_KEY_STOW_1_Z 23.0
+  #define Z_PROBE_ALLEN_KEY_STOW_1_X 62
+  #define Z_PROBE_ALLEN_KEY_STOW_1_Y 63
+  #define Z_PROBE_ALLEN_KEY_STOW_1_Z 25.0
   #define Z_PROBE_ALLEN_KEY_STOW_1_FEEDRATE XY_PROBE_SPEED
   // Move the nozzle down further to push the probe into retracted position.
   #define Z_PROBE_ALLEN_KEY_STOW_2_X  Z_PROBE_ALLEN_KEY_STOW_1_X
@@ -584,13 +582,13 @@
 //
 // *** PLEASE READ ALL INSTRUCTIONS BELOW FOR SAFETY! ***
 //
-// To continue using the Z-min-endstop for homing, be sure to disable Z_SAFE_HOMING.
+// To continue using the Z-min-endstop for homing, be sure to disable Z_SAFE_HOMING. <- brauchen wir nicht da nicht für homing genutzt, also an lassen
 // Example: To park the head outside the bed area when homing with G28.
 //
-// To use a separate Z probe, your board must define a Z_MIN_PROBE_PIN.
+// To use a separate Z probe, your board must define a Z_MIN_PROBE_PIN. <------------------- checken
 //
 // For a servo-based Z probe, you must set up servo support below, including
-// NUM_SERVOS, Z_ENDSTOP_SERVO_NR and Z_SERVO_ANGLES.
+// NUM_SERVOS, Z_ENDSTOP_SERVO_NR and Z_SERVO_ANGLES. <- nope, kein servo
 //
 // - RAMPS 1.3/1.4 boards may be able to use the 5V, GND, and Aux4->D32 pin.
 // - Use 5V for powered (usu. inductive) sensors.
@@ -598,11 +596,11 @@
 //   - normally-closed switches to GND and D32.
 //   - normally-open switches to 5V and D32.
 //
-// Normally-closed switches are advised and are the default.
+// Normally-closed switches are advised and are the default. <-------------- haben wir?
 //
 // The Z_MIN_PROBE_PIN sets the Arduino pin to use. (See your board's pins file.)
 // Since the RAMPS Aux4->D32 pin maps directly to the Arduino D32 pin, D32 is the
-// default pin for all RAMPS-based boards. Some other boards map differently.
+// default pin for all RAMPS-based boards. Some other boards map differently. <--------------- checken ob wahr
 // To set or change the pin for your board, edit the appropriate pins_XXXXX.h file.
 //
 // WARNING:
@@ -616,6 +614,8 @@
 #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // To use a probe you must enable one of the two options above!
+
+//#define ENDSTOPS_ALWAYS_ON_DEFAULT
 
 // This option disables the use of the Z_MIN_PROBE_PIN
 // To enable the Z probe pin but disable its use, uncomment the line below. This only affects a
@@ -668,7 +668,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
+#define INVERT_E0_DIR true
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -739,12 +739,12 @@
 
 // @section bedlevel
 
-//#define AUTO_BED_LEVELING_FEATURE // Delete the comment to enable (remove // at the start of the line)
+#define AUTO_BED_LEVELING_FEATURE // Delete the comment to enable (remove // at the start of the line)
 
 // Enable this feature to get detailed logging of G28, G29, M48, etc.
 // Logging is off by default. Enable this logging feature with 'M111 S32'.
 // NOTE: Requires a huge amount of PROGMEM.
-//#define DEBUG_LEVELING_FEATURE
+#define DEBUG_LEVELING_FEATURE
 
 #if ENABLED(AUTO_BED_LEVELING_FEATURE)
 
@@ -766,7 +766,7 @@
   #if ENABLED(AUTO_BED_LEVELING_GRID)
 
     // Set the rectangle in which to probe
-    #define DELTA_PROBEABLE_RADIUS (DELTA_PRINTABLE_RADIUS - 10)
+    #define DELTA_PROBEABLE_RADIUS (DELTA_PRINTABLE_RADIUS - 19)
     #define LEFT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
     #define RIGHT_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
     #define FRONT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
@@ -778,7 +778,7 @@
     // Compensate by interpolating between the nearest four Z probe values for each point.
     // Useful for deltas where the print surface may appear like a bowl or dome shape.
     // Works best with AUTO_BED_LEVELING_GRID_POINTS 5 or higher.
-    #define AUTO_BED_LEVELING_GRID_POINTS 9
+    #define AUTO_BED_LEVELING_GRID_POINTS 7
 
   #else  // !AUTO_BED_LEVELING_GRID
 
@@ -811,7 +811,7 @@
 // For DELTA this is the top-center of the Cartesian print volume.
 //#define MANUAL_X_HOME_POS 0
 //#define MANUAL_Y_HOME_POS 0
-#define MANUAL_Z_HOME_POS 250 // Distance between the nozzle to printbed after homing
+#define MANUAL_Z_HOME_POS 234.57 // Distance between the nozzle to printbed after homing
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
 //
@@ -821,7 +821,7 @@
 // - If stepper drivers time out, it will need X and Y homing again before Z homing.
 // - Move the Z probe (or nozzle) to a defined XY point before Z Homing when homing all axes (G28).
 // - Prevent Z homing when the Z probe is outside bed area.
-//#define Z_SAFE_HOMING
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT ((X_MIN_POS + X_MAX_POS) / 2)    // X point for Z homing when homing all axis (G28).
@@ -839,9 +839,9 @@
 
 // default settings
 // delta speeds must be the same on xyz
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80, 80, 80, 760*1.1}  // default steps per unit for Kossel (GT2, 20 tooth)
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 500, 25}    // (mm/sec)
-#define DEFAULT_MAX_ACCELERATION      {9000,9000,9000,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {79, 79, 79, 94}  // default steps per unit for Kossel (GT2, 20 tooth)
+#define DEFAULT_MAX_FEEDRATE          {200, 200, 200, 200}    // (mm/sec)
+#define DEFAULT_MAX_ACCELERATION      {9000,9000,9000,9000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration in mm/s^2 for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration in mm/s^2 for retracts
@@ -850,7 +850,7 @@
 // The speed change that does not require acceleration (i.e. the software might assume it can be done instantaneously)
 #define DEFAULT_XYJERK                20.0    // (mm/sec)
 #define DEFAULT_ZJERK                 20.0    // (mm/sec) Must be same as XY for delta
-#define DEFAULT_EJERK                 5.0     // (mm/sec)
+#define DEFAULT_EJERK                 20.0     // (mm/sec)
 
 
 //=============================================================================
@@ -1181,7 +1181,7 @@
 // PanelOne from T3P3 (via RAMPS 1.4 AUX2/AUX3)
 // http://reprap.org/wiki/PanelOne
 //
-#define PANEL_ONE
+//#define PANEL_ONE
 
 //
 // MaKr3d Makr-Panel with graphic controller and SD support.
@@ -1215,7 +1215,7 @@
 //
 // Note: Usually sold with a white PCB.
 //
-//#define REPRAP_DISCOUNT_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_SMART_CONTROLLER
 
 //
 // GADGETS3D G3D LCD/SD Controller
