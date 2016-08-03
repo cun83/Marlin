@@ -485,7 +485,7 @@
 // For example an inductive probe, or a setup that uses the nozzle to probe.
 // An inductive probe must be deactivated to go below
 // its trigger-point if hardware endstops are active.
-//#define FIX_MOUNTED_PROBE
+#define FIX_MOUNTED_PROBE
 
 // The BLTouch probe emulates a servo probe.
 //#define BLTOUCH
@@ -530,7 +530,7 @@
 
 // Allen key retractable z-probe as seen on many Kossel delta printers - http://reprap.org/wiki/Kossel#Automatic_bed_leveling_probe
 // Deploys by touching z-axis belt. Retracts by pushing the probe down. Uses Z_MIN_PIN.
-#define Z_PROBE_ALLEN_KEY
+//#define Z_PROBE_ALLEN_KEY
 
 #if ENABLED(Z_PROBE_ALLEN_KEY)
   // 2 or 3 sets of coordinates for deploying and retracting the spring loaded touch probe on G29,
@@ -762,14 +762,19 @@
   // Note: this feature generates 10KB extra code size.
   #define AUTO_BED_LEVELING_GRID  // Deltas only support grid mode.
 
+// cun83: nur hier zu einstellen von probe position
+//#define X_PROBE_OFFSET_FROM_EXTRUDER -16.5     // X offset: -left  +right  [of the nozzle]
+//#define Y_PROBE_OFFSET_FROM_EXTRUDER -10.0  // Y offset: -front +behind [the nozzle]
+//#define Z_PROBE_OFFSET_FROM_EXTRUDER -7.4  // Z offset: -below +above  [the nozzle]
+
   #if ENABLED(AUTO_BED_LEVELING_GRID)
 
     // Set the rectangle in which to probe
-    #define DELTA_PROBEABLE_RADIUS (DELTA_PRINTABLE_RADIUS - 19)
+    #define DELTA_PROBEABLE_RADIUS (DELTA_PRINTABLE_RADIUS) //- 19)
     #define LEFT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
-    #define RIGHT_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
+    #define RIGHT_PROBE_BED_POSITION (DELTA_PROBEABLE_RADIUS + X_PROBE_OFFSET_FROM_EXTRUDER) //cun83: compensate for probe position
     #define FRONT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
-    #define BACK_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
+    #define BACK_PROBE_BED_POSITION (DELTA_PROBEABLE_RADIUS + Y_PROBE_OFFSET_FROM_EXTRUDER)  //cun83: compensate for probe position
 
     #define MIN_PROBE_EDGE 10 // The Z probe minimum square sides can be no smaller than this.
 
@@ -777,7 +782,7 @@
     // Compensate by interpolating between the nearest four Z probe values for each point.
     // Useful for deltas where the print surface may appear like a bowl or dome shape.
     // Works best with AUTO_BED_LEVELING_GRID_POINTS 5 or higher.
-    #define AUTO_BED_LEVELING_GRID_POINTS 7
+    #define AUTO_BED_LEVELING_GRID_POINTS 10
 
   #else  // !AUTO_BED_LEVELING_GRID
 
