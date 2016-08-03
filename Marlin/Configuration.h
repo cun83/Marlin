@@ -1,5 +1,4 @@
-/**
- * Marlin 3D Printer Firmware
+ /* Marlin 3D Printer Firmware
  * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
@@ -517,7 +516,7 @@
 //    O-- FRONT --+
 //  (0,0)
 #define X_PROBE_OFFSET_FROM_EXTRUDER -16.5     // X offset: -left  +right  [of the nozzle]
-#define Y_PROBE_OFFSET_FROM_EXTRUDER -10  // Y offset: -front +behind [the nozzle]
+#define Y_PROBE_OFFSET_FROM_EXTRUDER -10.0  // Y offset: -front +behind [the nozzle]
 #define Z_PROBE_OFFSET_FROM_EXTRUDER -7.4  // Z offset: -below +above  [the nozzle]
 
 // X and Y axis travel speed (mm/m) between probes
@@ -527,7 +526,7 @@
 // Speed for the "accurate" probe of each point
 #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
 // Use double touch for probing
-//#define PROBE_DOUBLE_TOUCH
+#define PROBE_DOUBLE_TOUCH
 
 // Allen key retractable z-probe as seen on many Kossel delta printers - http://reprap.org/wiki/Kossel#Automatic_bed_leveling_probe
 // Deploys by touching z-axis belt. Retracts by pushing the probe down. Uses Z_MIN_PIN.
@@ -555,8 +554,8 @@
 
   #define Z_PROBE_ALLEN_KEY_STOW_DEPTH 25
   // Move the probe into position
-  #define Z_PROBE_ALLEN_KEY_STOW_1_X 62
-  #define Z_PROBE_ALLEN_KEY_STOW_1_Y 63
+  #define Z_PROBE_ALLEN_KEY_STOW_1_X 0
+  #define Z_PROBE_ALLEN_KEY_STOW_1_Y 0
   #define Z_PROBE_ALLEN_KEY_STOW_1_Z 25.0
   #define Z_PROBE_ALLEN_KEY_STOW_1_FEEDRATE XY_PROBE_SPEED
   // Move the nozzle down further to push the probe into retracted position.
@@ -811,7 +810,7 @@
 // For DELTA this is the top-center of the Cartesian print volume.
 //#define MANUAL_X_HOME_POS 0
 //#define MANUAL_Y_HOME_POS 0
-#define MANUAL_Z_HOME_POS 234.57 // Distance between the nozzle to printbed after homing
+#define MANUAL_Z_HOME_POS 234.75 // 234.57 // Distance between the nozzle to printbed after homing
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
 //
