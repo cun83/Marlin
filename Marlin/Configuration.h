@@ -400,7 +400,6 @@
 
   // Center-to-center distance of the holes in the diagonal push rods.
   //#define DELTA_DIAGONAL_ROD 225.0 // mm
-  #define DELTA_DIAGONAL_ROD 226.0 // mm
   
 
   // Horizontal offset from middle of printer to smooth rod center.
