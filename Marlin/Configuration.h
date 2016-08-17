@@ -19,7 +19,7 @@
  *
  */
 
-/**lklk
+/** XYZ
  * Configuration.h
  *
  * Basic settings such as:
