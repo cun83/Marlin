@@ -19,7 +19,7 @@
  *
  */
 
-/**
+/**lklk
  * Configuration.h
  *
  * Basic settings such as:
@@ -125,7 +125,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "Der Geraet v3"
+#define CUSTOM_MACHINE_NAME "Der Geraet v4"
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -399,7 +399,9 @@
   // NOTE NB all values for DELTA_* values MUST be floating point, so always have a decimal point in them
 
   // Center-to-center distance of the holes in the diagonal push rods.
-  #define DELTA_DIAGONAL_ROD 225.0 // mm
+  //#define DELTA_DIAGONAL_ROD 225.0 // mm
+  #define DELTA_DIAGONAL_ROD 226.0 // mm
+  
 
   // Horizontal offset from middle of printer to smooth rod center.
   #define DELTA_SMOOTH_ROD_OFFSET 167.0 // mm
@@ -414,7 +416,7 @@
   #define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-(DELTA_EFFECTOR_OFFSET)-(DELTA_CARRIAGE_OFFSET))
 
   // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
-  #define DELTA_PRINTABLE_RADIUS 70.0
+  #define DELTA_PRINTABLE_RADIUS 75.0
 
   // Delta calibration menu
   // uncomment to add three points calibration menu option.
@@ -522,9 +524,10 @@
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 4000
 // Speed for the first approach when double-probing (with PROBE_DOUBLE_TOUCH)
-#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
+//#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
+#define Z_PROBE_SPEED_FAST (HOMING_FEEDRATE_Z / 4)
 // Speed for the "accurate" probe of each point
-#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
+#define Z_PROBE_SPEED_SLOW (HOMING_FEEDRATE_Z / 6)
 // Use double touch for probing
 #define PROBE_DOUBLE_TOUCH
 
@@ -762,7 +765,7 @@
   // Note: this feature generates 10KB extra code size.
   #define AUTO_BED_LEVELING_GRID  // Deltas only support grid mode.
 
-// cun83: nur hier zu einstellen von probe position
+// cun83: nur hier zum C&P für Einstellen von LEFT_PROBE_BED_POSITION etc.
 //#define X_PROBE_OFFSET_FROM_EXTRUDER -16.5     // X offset: -left  +right  [of the nozzle]
 //#define Y_PROBE_OFFSET_FROM_EXTRUDER -10.0  // Y offset: -front +behind [the nozzle]
 //#define Z_PROBE_OFFSET_FROM_EXTRUDER -7.4  // Z offset: -below +above  [the nozzle]
@@ -776,7 +779,7 @@
     #define FRONT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
     #define BACK_PROBE_BED_POSITION (DELTA_PROBEABLE_RADIUS + Y_PROBE_OFFSET_FROM_EXTRUDER)  //cun83: compensate for probe position
 
-    #define MIN_PROBE_EDGE 10 // The Z probe minimum square sides can be no smaller than this.
+    #define MIN_PROBE_EDGE 5 //10 // The Z probe minimum square sides can be no smaller than this.
 
     // Non-linear bed leveling will be used.
     // Compensate by interpolating between the nearest four Z probe values for each point.
@@ -815,7 +818,8 @@
 // For DELTA this is the top-center of the Cartesian print volume.
 //#define MANUAL_X_HOME_POS 0
 //#define MANUAL_Y_HOME_POS 0
-#define MANUAL_Z_HOME_POS 229.25 //234.75 // 234.57 // Distance between the nozzle to printbed after homing
+// !! about 0.3 too much!! Level out with M106 Z-0.3, save to EEPROM with M500!
+#define MANUAL_Z_HOME_POS 228.30 //229.0 //234.75 // 234.57 // Distance between the nozzle to printbed after homing
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
 //
@@ -835,7 +839,7 @@
 
 // Delta only homes to Z
 //cun83: WTF??? crashes into endstops hard: (200*60) = 12000!!!!; what does this calc mean??M org: #define HOMING_FEEDRATE_Z  (200*60)
-#define HOMING_FEEDRATE_Z  6000  //cun83: less anyoing?
+#define HOMING_FEEDRATE_Z (50*60) // (100*60) 6000  //cun83: less anyoing?
 
 //
 // MOVEMENT SETTINGS
@@ -872,7 +876,7 @@
 // M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).
 // M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
 //define this to enable EEPROM support
-//#define EEPROM_SETTINGS
+#define EEPROM_SETTINGS
 
 #if ENABLED(EEPROM_SETTINGS)
   // To disable EEPROM Serial responses and decrease program space by ~1700 byte: comment this out:
