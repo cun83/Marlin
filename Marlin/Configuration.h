@@ -400,6 +400,7 @@
 
   // Center-to-center distance of the holes in the diagonal push rods.
   //#define DELTA_DIAGONAL_ROD 225.0 // mm
+  #define DELTA_DIAGONAL_ROD 217.0 // mm
   
 
   // Horizontal offset from middle of printer to smooth rod center.
@@ -818,7 +819,7 @@
 //#define MANUAL_X_HOME_POS 0
 //#define MANUAL_Y_HOME_POS 0
 // !! about 0.3 too much!! Level out with M106 Z-0.3, save to EEPROM with M500!
-#define MANUAL_Z_HOME_POS 228.30 //229.0 //234.75 // 234.57 // Distance between the nozzle to printbed after homing
+#define MANUAL_Z_HOME_POS 239.0 //228.30 //229.0 //234.75 // 234.57 // Distance between the nozzle to printbed after homing
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
 //
