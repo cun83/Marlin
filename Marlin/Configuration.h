@@ -412,7 +412,9 @@
   #define DELTA_CARRIAGE_OFFSET 15.9 // mm
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
-  #define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-(DELTA_EFFECTOR_OFFSET)-(DELTA_CARRIAGE_OFFSET))
+  // 167.0 - 30.8 - 15.9 = 120.03
+  //#define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-(DELTA_EFFECTOR_OFFSET)-(DELTA_CARRIAGE_OFFSET))
+  #define DELTA_RADIUS 118.7
 
   // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
   #define DELTA_PRINTABLE_RADIUS 75.0
@@ -524,9 +526,9 @@
 #define XY_PROBE_SPEED 4000
 // Speed for the first approach when double-probing (with PROBE_DOUBLE_TOUCH)
 //#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
-#define Z_PROBE_SPEED_FAST (HOMING_FEEDRATE_Z / 4)
+#define Z_PROBE_SPEED_FAST (HOMING_FEEDRATE_Z / 2)
 // Speed for the "accurate" probe of each point
-#define Z_PROBE_SPEED_SLOW (HOMING_FEEDRATE_Z / 6)
+#define Z_PROBE_SPEED_SLOW (HOMING_FEEDRATE_Z / 4)
 // Use double touch for probing
 #define PROBE_DOUBLE_TOUCH
 
@@ -784,7 +786,7 @@
     // Compensate by interpolating between the nearest four Z probe values for each point.
     // Useful for deltas where the print surface may appear like a bowl or dome shape.
     // Works best with AUTO_BED_LEVELING_GRID_POINTS 5 or higher.
-    #define AUTO_BED_LEVELING_GRID_POINTS 10
+    #define AUTO_BED_LEVELING_GRID_POINTS 7
 
   #else  // !AUTO_BED_LEVELING_GRID
 
